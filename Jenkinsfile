@@ -2,7 +2,7 @@ node('demo-host') {
 
     stage('Build App') {
         sh '''
-            if [ -d /var/www/flask/demoapp]; then
+            if [ -d /var/www/flask/demoapp ]; then
                 cd /var/www/flask/demoapp
                 git pull
             else
