@@ -3,7 +3,13 @@ node('demo-host') {
     stage('Build App') {
         sh '''
             cd /var/www/flask/
-            git clone https://github.com/abacl7/demoapp.git
+            if [ -d demoapp]; then
+                cd demoapp
+                git pull
+            else
+                git clone https://github.com/abacl7/demoapp.git
+            fi
+
         '''
     }
 
