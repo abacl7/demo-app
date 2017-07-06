@@ -4,9 +4,6 @@ node('demo-host') {
 
     stage('Build App') {
         git url: git_url
-    }
-
-    stage('Copy app') {
         sh 'cp -rf demoapp/ /var/www/flask/'
     }
 
