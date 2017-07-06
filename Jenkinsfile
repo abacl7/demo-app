@@ -1,10 +1,10 @@
-def git_url = 'https://github.com/abacl7/demoapp.git'
-
 node('demo-host') {
 
     stage('Build App') {
-        git url: git_url
-        sh 'cp -rf demoapp/ /var/www/flask/'
+        sh '''
+            cd /var/www/flask/
+            git clone https://github.com/abacl7/demoapp.git
+        '''
     }
 
     stage('Reboot HTTPD') {
