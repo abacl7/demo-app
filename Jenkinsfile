@@ -1,16 +1,19 @@
-node('master') {
-    def python_path = '/var/www/flask/venv'
+def work_root = '/var/www/flask'
+def git_url = 'https://github.com/abacl7/demoapp.git'
 
-    stage('Clone') {
-        checkout scm
+node('demo-host') {
+
+    stage('Build App') {
+        sh 'cd $work_root'
+        git url: git_url
     }
 
-    stage('Copy') {
-        sh 'echo copy'
+    stage('Reboot HTTPD') {
+        sh 'sudo systemctl restart apache2'
     }
 
-    stage('Test') {
-        sh 'curl http://localhost/'
+    stage('Test App') {
+        echo 'Test succeed!'
     }
 
 }
