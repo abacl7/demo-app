@@ -2,14 +2,13 @@ node('demo-host') {
 
     stage('Build App') {
         sh '''
-            cd /var/www/flask/
-            if [ -d demoapp]; then
-                cd demoapp
+            if [ -d /var/www/flask/demoapp]; then
+                cd /var/www/flask/demoapp
                 git pull
             else
+                cd /var/www/flask/
                 git clone https://github.com/abacl7/demoapp.git
             fi
-
         '''
     }
 
